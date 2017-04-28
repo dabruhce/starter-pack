@@ -16,8 +16,8 @@ import ScrollToTop from '../shared-components/ScrollToTop';
 import GaTracker from '../shared-components/GaTracker';
 import RestrictedPage from '../auth/RestrictedPage';
 
-import { toggleDropdown } from './reducer';
-import { getIsDropdownOpen } from './selectors';
+import { toggleDropdown, toggleDrawer } from './reducer';
+import { getIsDropdownOpen, getIsDrawerOpen } from './selectors';
 
 const App = ({ history, isDropdownOpen, profile, actions }) => (
   <ConnectedRouter history={history}>
@@ -29,6 +29,7 @@ const App = ({ history, isDropdownOpen, profile, actions }) => (
             handleLogin={() => actions.loginRequest()}
             handleLogout={() => actions.logout()}
             onToggleDropdown={() => actions.toggleDropdown()}
+            onToggleDrawer={() => actions.toggleDrawer()}
             isDropdownOpen={isDropdownOpen}
           />
           <Switch>
@@ -61,13 +62,14 @@ App.defaultProps = {
 const mapStateToProps = state => (
   {
     isDropdownOpen: getIsDropdownOpen(state),
+    isDrawerOpen: getIsDrawerOpen(state),
     profile: authSelectors.getProfile(state),
   }
 );
 
 const mapDispatchToProps = dispatch => (
   {
-    actions: bindActionCreators({ toggleDropdown, ...authActions }, dispatch),
+    actions: bindActionCreators({ toggleDropdown, toggleDrawer, ...authActions }, dispatch),
   }
 );
 

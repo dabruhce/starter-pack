@@ -13,7 +13,7 @@ const HomePage = () => (
   <Flex column style={{ flex: '1 0 auto' }}>
     <Banner
       style={{ minHeight: '75vh', backgroundAttachment: 'scroll' }}
-      backgroundImage="https://img.jch254.com/Banner.jpg"
+      backgroundImage=""
       m={0}
     >
       <Heading size={1} big>
